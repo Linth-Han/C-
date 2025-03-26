@@ -1,0 +1,30 @@
+#include"iostream"
+using namespace std;
+int* f(int* x)//接收指针参数
+{
+    (*x)++;//对指针指向的值进行自增操作
+    return x;//返回指针，如果cout这个函数最后会得到一个地址
+}
+int& g(int&x)
+{
+    x++;
+    return x;//返回自增后的引用，所以cout得到的是一个值
+}
+int x;
+int& h()//C++中不能直接对函数调用的结果赋值，除非函数返回一个引用类型（如本题的（int&））
+{
+    int q;
+//    return q;error//
+    return x;
+}
+int main()
+{
+    int a=0;
+    cout<<f(&a)<<endl;;
+    cout<<g(a)<<endl;
+    //cout<<h()=16;error,应拆分为两部进行书写
+    h()=16;
+    cout<<h();
+    system("pause");
+    return 0;
+}
